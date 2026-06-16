@@ -1,0 +1,300 @@
+/* Reset & Base Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-color: #0f172a;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary: #38bdf8;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Glassmorphism Utility */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* Sections */
+section {
+    padding: 120px 10%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.section-title span {
+    color: var(--primary);
+}
+
+/* Hero Section */
+.hero {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: var(--primary);
+}
+
+.hero p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--primary);
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 30px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+}
+
+.hero-image .glass-box {
+    width: 350px;
+    height: 450px;
+    background: linear-gradient(135deg, rgba(56,189,248,0.2) 0%, rgba(255,255,255,0.05) 100%);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    transform: rotate(3deg);
+    transition: transform 0.5s;
+}
+
+.hero-image .glass-box:hover {
+    transform: rotate(0deg);
+}
+
+/* Grid Layout for Skills & Karya */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    padding: 30px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Timeline Pendidikan */
+.timeline {
+    border-left: 2px solid var(--primary);
+    padding-left: 30px;
+    margin-left: 20px;
+}
+
+.timeline-item {
+    padding: 20px 30px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -41px;
+    top: 25px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary);
+    border-radius: 50%;
+}
+
+.date {
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Karya Project Card Images */
+.project-img {
+    width: 100%;
+    height: 180px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Container pembungkus utama */
+.hero-image {
+    position: relative; /* Ini wajib agar elemen di dalamnya bisa diatur posisinya */
+}
+
+.glass-container {
+    position: relative;
+    width: 300px;  /* Sesuaikan lebar */
+    height: 400px; /* Sesuaikan tinggi */
+}
+
+.glass-box, .foto-profil {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+/* Foto profil harus berada di depan kotak kaca */
+.foto-profil {
+    z-index: 2; 
+    object-fit: cover;
+    /* Geser foto sedikit agar efek 'glass-box' di belakangnya kelihatan */
+    transform: translate(25px, 25px); 
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Otomatis rapi */
+    gap: 20px; /* Jarak antar kartu */
+    padding: 20px;
+    object-fit: cover
+}
+.grid-container {
+    display: grid;         /* Memaksa elemen di dalamnya berjejer */
+    flex-wrap: wrap;       /* Jika layar penuh, dia otomatis turun ke bawah */
+    gap: 20px;             /* Jarak antar kotak */
+    justify-content: center; /* Menengah kan semua kartu */
+}
+.card-karya {
+    width: 300px;          /* Lebar tetap untuk setiap kartu */
+    flex-shrink: 3;        /* Mencegah kartu mengecil paksa */
+    /* Tambahkan background agar kotak terlihat */
+    background: #1a2233;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+/* Atur ukuran kotak pembungkusnya */
+.card-image {
+    width: 100%;    /* Mengikuti lebar card */
+    height: 150px;  /* ATUR TINGGI DI SINI: Makin kecil angkanya, makin kecil fotonya */
+    overflow: hidden; /* Penting: agar foto yang kebesaran dipotong */
+    border-radius: 10px; /* Supaya sudutnya tumpul cantik */
+}
+
+/* Atur fotonya agar mengisi kotak dengan proporsional */
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ini yang bikin foto gak gepeng */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--glass-border);
+}
+
+/* Animasi Scroll Reveal */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
